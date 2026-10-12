@@ -56,6 +56,7 @@ day29/quotes.db
 
 # Day30运行输出与隔离验收副本
 day30/out/
+day30/book30/out/
 day30/quotes30.db
 day30/ledger.db
 work/
