@@ -1,11 +1,11 @@
 # Python 学习记录 🐍
 
 项目式 Python 学习：按学习单元推进，结合短时回忆、独立开发、验证与迁移练习。
-**目标：具备独立开发与验证能力，按岗位需求准备求职（90 天规划窗口）**
+**目标：独立拆解需求、开发、验证、维护与交付Python小项目（90个学习单元，可跨日）**
 
 ![进度](https://img.shields.io/badge/%E8%BF%9B%E5%BA%A6-31%20%2F%2090%20%E5%A4%A9%20(34%25)-orange)
-![当前阶段](https://img.shields.io/badge/%E9%98%B6%E6%AE%B5%E2%91%A1-%E4%BB%8E%E9%9B%B6%E5%81%9A%E9%A1%B9%E7%9B%AE%20Day%2021--35-yellow)
-![目标](https://img.shields.io/badge/%E7%9B%AE%E6%A0%87-Python%20%E5%B7%A5%E4%BD%9C-blueviolet)
+![当前阶段](https://img.shields.io/badge/%E9%98%B6%E6%AE%B5%E2%91%A1-%E9%A1%B9%E7%9B%AE%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9B%E9%98%B6%20Day%2021--40-yellow)
+![目标](https://img.shields.io/badge/Python-Projects-blueviolet)
 
 ## 学习进度
 
@@ -22,11 +22,13 @@ Day 61–90  ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜�
 | 阶段 | 天数 | 状态 |
 | --- | --- | --- |
 | ① 基础收尾（包 / 依赖 / 标准库 / 正则 / 调试） | Day 15–20 | ✅ 已完成（Day 20 复习日三阶段全部验收） |
-| ② 项目与能力补强（记账本 / sqlite / 爬虫 / 验证 / 迁移） | Day 21–35 | 🟨 进行中（Day21–30已完成；Day30含AI协助修复，Day31验证作业已通过） |
-| ③ 求职核心技能（Git / Linux / HTTP / Web 或数据 / 测试） | Day 36–60 | ⬜ 未开始 |
-| ④ 作品与求职（优先 1–2 个完整作品 / 简历 / 面试） | Day 61–90 | ⬜ 未开始 |
+| ② 项目与数据库进阶（账本 / 采集 / JOIN / DAO / 索引 / 交付） | Day 21–40 | 🟨 Day21–31完成；Day32进行中；33–40明确补回多表与采集项目 |
+| ③ 工程基本功与专题项目（Git / Linux / HTTP / 测试 / 一个技术专题） | Day 41–70 | ⬜ 未开始；Day50做技术体验，由用户明确专题 |
+| ④ 语言进阶、维护与综合交付（优先1–2个完整项目） | Day 71–90 | ⬜ 未开始；生成器/装饰器/算法/复现与改需求 |
 
-> 路线与方向见 **[ROADMAP.md](ROADMAP.md)**；授课与验收见 **[TEACHING.md](TEACHING.md)**；能力证据见 **[LEARNING_PROGRESS.md](LEARNING_PROGRESS.md)**。方向待本人偏好与目标岗位样本确认，不默认后端。
+> 技术路线见 **[ROADMAP.md](ROADMAP.md)**；授课与验收见 **[TEACHING.md](TEACHING.md)**；能力证据见 **[LEARNING_PROGRESS.md](LEARNING_PROGRESS.md)**。地点、岗位选择与投递等由用户自行安排，不计入课程。
+
+2026-10-15课程审查已完成：[审查记录](docs/curriculum/COURSE_AUDIT.md)说明问题、证据与修改；[知识覆盖表](docs/curriculum/COURSE_REFERENCES.md)列出前置与验收位置。Day01–31完成记录和Day32作业保留，后续每单元一个主要新难点。
 
 ## 每日记录
 
@@ -53,7 +55,7 @@ Day 61–90  ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜�
 | ✅ | Day 17 | 标准库四件套：`pathlib` / `csv` / `datetime` / `collections` | `day17/day17.py` | `day17/homework17.py` — 通讯录导出器（CSV + 时间戳报表 + 分组统计，已验收） |
 | ✅ | Day 18 | 正则表达式 `re`：search / findall / sub / fullmatch / 分组 / 元字符 | `day18/day18.py` | `day18/homework18.py` — 通讯录数据清洗器（抽取/校验/脱敏手机号，已验收） |
 | ✅ | Day 19 | 调试：读 traceback / `print` 打点 / `breakpoint()`+pdb / `logging` 分级 / `assert` | `day19/day19.py` + `crash_demo.py` + `pdb_demo.py` | `day19/homework19.py` — 调试练习台（读错误名 / 修 bug / logging 落盘，已验收） |
-| ✅ | Day 20 | 复习日：**不看旧文件，从零重写通讯录**（单文件 → 拆包 → 挂上正则/CSV/日志） | `day20/homework20.md` + `day20/复习地图.md` | 你自己的 `day20/review.py` + `day20/mypkg/`（三阶段已验收） |
+| ✅ | Day 20 | 通讯录综合复习（当时的闭卷任务，保留历史记录；后续按现行教学约定） | `day20/homework20.md` + `day20/复习地图.md` | 你自己的 `day20/review.py` + `day20/mypkg/`（三阶段已验收） |
 | ✅ | Day 21 | 从零 JSON 命令行记账本：添加、校验、分类金额统计、菜单 | `day21/day21.py` | `day21/homework21.md` + `day21/hw_21.py`（仓库汇总记录已验收） |
 | ✅ | Day 22 | 记账本扩展：按分类·日期筛选、月度报表、导出 CSV | `day22/day22.py` | `day22/homework22.md` + `day22/hw_22.py`（已验收：筛选/报表/CSV 落盘） |
 | ✅ | Day 23 | 记账本收尾：删除·修改一笔、空月报表、跨月验收 | `day23/day23.py` | `day23/homework23.md` + `day23/hw_23.py`（已验收：删改/空月/跨月） |
@@ -76,11 +78,13 @@ Day30作业完成计入进度；帮助程度与独立掌握另行记录，延迟
 - [x] 第一个完整项目：菜单版通讯录（Day 09、12）
 - [x] 面向对象：class / self / 双下划线方法 / 继承 / 多态（Day 10–13）
 - [x] 阶段① 基础收尾：包 / 虚拟环境 / 标准库 / 正则 / 调试（Day 15–20）
-- [ ] 阶段② 从零做项目：能不看教程写出完整程序（Day 21–35）
-- [ ] 阶段③ 求职核心技能：Web 或数据处理 + Git + Linux + 测试（Day 36–60）
-- [ ] 阶段④ 作品集：优先 1–2 个完整项目 + 简历（Day 61–90）
+- [ ] 阶段② 项目与数据库进阶：可查文档，自行设计并交付多表采集工具（Day21–40）
+- [ ] 阶段③ 工程基本功与专题项目：一个技术专题 + Git/Linux/HTTP/测试（Day41–70）
+- [ ] 阶段④ 语言进阶与综合交付：优先1–2个项目，能解释、验证与修改（Day71–90）
 
 ## 运行方法
+
+新电脑先按[SETUP.md](SETUP.md)重建项目根目录环境；当前Day31/32按各自任务书从项目根目录启动，保留完整仓库依赖。下面的进入当天目录方式主要用于早期课件，不能代替各任务书指定入口。
 
 ```powershell
 # 进对应天数目录再运行（部分程序读写同目录下的数据文件）
@@ -103,5 +107,20 @@ python main.py
 day01/  day02/  ...  day15/   # 每天：课堂代码 + 作业 + 程序产生的数据文件
 day14/                        # 多文件示例：contactbook.py（工具箱）+ main.py（入口）
 day15/mybook/                 # 包示例：__init__.py（门面）+ storage.py + book.py + cli.py
-ROADMAP.md                    # 90 天求职路线图
+ROADMAP.md                    # 90个学习单元的技术路线
+TEACHING.md                   # 当前教学约定
+LEARNING_PROGRESS.md          # 当前进度、能力证据与历史记录
+SETUP.md                      # 新电脑环境与教学接续
+docs/curriculum/              # 课程参考与审查记录
+.agents/skills/               # 项目教学、验收及推送技能
 ```
+
+## 换电脑继续学习
+
+教学规则、路线、能力记录及三个项目技能都随本仓库维护：
+
+- [python-project-tutor](.agents/skills/python-project-tutor/SKILL.md)：解释、授课、课程审查与推进。
+- [homework-verify](.agents/skills/homework-verify/SKILL.md)：隔离验收与证据记录。
+- [day-push](.agents/skills/day-push/SKILL.md)：按有效授权提交推送、核对远程结果。
+
+提交并推送后，另一台电脑拉取完整仓库，在仓库目录启动AI并读取AGENTS.md即可接续文件中的约定；客户端未发现技能时直接读取对应SKILL.md。无需安装原电脑的全局python-tutor。详细环境和启动检查见[SETUP.md](SETUP.md)。Git不传递聊天记录、全局技能、长期记忆或.venv，也不能保证不同模型的教学表现完全相同。

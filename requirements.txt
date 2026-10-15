@@ -1,0 +1,4 @@
+# Current Day31/32 direct dependencies, verified with Python 3.14.4.
+# This is not a complete historical/future course list or a transitive lock file.
+requests==2.34.2
+beautifulsoup4==4.15.0

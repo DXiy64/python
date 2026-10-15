@@ -18,7 +18,7 @@ def parse_result(html):
     # TODO 1：调用已有parse(html)，不重写BeautifulSoup逻辑。
     # 成功返回(True, rows)；捕获ValueError后返回(False, str(error))。
     # 不打印，不把失败变成(True, [])。
-    raise NotImplementedError("请完成TODO 1")
+    rows = parse(html)
 
 
 def fetch_result(fetcher):

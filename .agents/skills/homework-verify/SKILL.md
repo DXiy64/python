@@ -1,16 +1,20 @@
 ---
 name: homework-verify
-description: Use when verifying dayNN homework runs. Isolated acceptance with explicit requirements and learner-owned checks.
+description: 验收本仓库 dayNN 作业时使用。按原需求在隔离副本检查功能，保护学员数据并记录实际帮助程度。
 ---
 
 # 作业验收
 
-先读仓库AGENTS.md、TEACHING.md、任务书、代码与种子数据；本次要求与历史案例分开，提前明确通过标准，不把新挑战追溯为旧作业失败。
+先读仓库AGENTS.md、TEACHING.md、LEARNING_PROGRESS顶部当前状态、任务书、代码与种子数据。按本次请求确定范围，历史案例与本次要求分开，不把新挑战追溯为旧作业失败。课程/技能审查或只运行讲义不算作业验收。
 
-Windows/PowerShell中优先项目.venv/Scripts/python.exe；验证放在当前工作区work下唯一命名副本或临时数据库，不能污染真实数据。可用Python subprocess.run传input、timeout并检查退出码；未知循环限时与限输出。
+按SETUP确认当前项目解释器，Windows优先根目录.venv/Scripts/python.exe，macOS/Linux用.venv/bin/python。验证放在work下唯一命名副本或临时数据库，不能污染真实数据。可用subprocess传input、timeout并检查退出码；未知循环限时且限制输出。
 
-分别检查正常、边界、关键失败以及跨进程持久化。依据任务决定合法金额等输入，不能把Day21的某组规则强加所有作业。网络解析用本地样本，联网另记。排行并列明确规则，SQL与Counter对齐。
+分别检查正常、边界与关键失败；有持久化要求才检查跨连接/跨进程重开。预期值由题目及种子数据独立计算，不能将相同实现同时当实际与预期。金额、日期、排行规则依据当前任务，不沿用旧作业的专用要求。网络解析用本地样本，联网另记；外部失败不冒充学员代码失败。
 
-让学员逐步自己写最小断言或验证表。报告需求、预期/实际、运行条件、帮助程度、阻塞/功能错误/建议；验收事实写入LEARNING_PROGRESS.md。TODO未完成标待完成，不伪造通过。
+默认不改原作业。能够检查的项目全部检查，首个异常后的问题可在副本做最小修复定位，明确哪些结果仅来自副本。原文件仍失败时不能因副本运行通过就宣布验收通过。目标TODO待完成；缺依赖/样本/接口等真实环境问题单列，不能全部当作TODO预期失败。
 
-清理临时副本前确认绝对路径在workspace/work范围内，用原生PowerShell LiteralPath操作；不使用跨shell删除，也不删除学员数据。
+报告需求、预期/实际、运行条件、帮助程度、执行者，以及阻塞/功能错误/建议。指导修改给原文件当前行号、相关原代码、最小修改和原因；不把学员查资料视为作弊，不以连续口头题增加门槛。逐步让学员自己写最小断言或验证表。
+
+验收事实写入LEARNING_PROGRESS；README和ROADMAP摘要按实际完成同步。课程完成、AI帮助与独立复测分别记录。未通过不提前开课；通过后按TEACHING中有效的持续授权，使用[项目教学技能](../python-project-tutor/SKILL.md)生成并验证下一课，再按[day-push](../day-push/SKILL.md)提交推送。用户最新范围指示优先；推送问题与学习通过状态分别说明。
+
+保留验证证据供复核；需要清理临时副本时，先确认绝对路径位于workspace/work范围内，再用当前系统原生文件操作，不删除学员数据。
