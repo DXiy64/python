@@ -1,0 +1,12 @@
+{
+  "authors": [
+    {"id": 1, "name": "Alex"},
+    {"id": 2, "name": "Blair"},
+    {"id": 3, "name": "Casey"}
+  ],
+  "quotes": [
+    {"id": 101, "author_id": 1, "text": "Keep learning."},
+    {"id": 102, "author_id": 1, "text": "Practice helps."},
+    {"id": 103, "author_id": 2, "text": "Ask clearly."}
+  ]
+}

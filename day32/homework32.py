@@ -18,7 +18,11 @@ def parse_result(html):
     # TODO 1：调用已有parse(html)，不重写BeautifulSoup逻辑。
     # 成功返回(True, rows)；捕获ValueError后返回(False, str(error))。
     # 不打印，不把失败变成(True, [])。
-    rows = parse(html)
+    try:
+        parse(html)
+        return True, parse(html)
+    except ValueError as error:
+        return False, str(error)
 
 
 def fetch_result(fetcher):
@@ -26,7 +30,12 @@ def fetch_result(fetcher):
     # 抓取成功后交给parse_result，返回它的结果。
     # 捕获requests.RequestException，返回(False, str(error))。
     # 不创建目录、连接数据库，也不要重新调用main。
-    raise NotImplementedError("请完成TODO 2")
+    
+    try:
+        html = fetcher()
+        return parse_result(html)
+    except requests.RequestException as error:
+        return False, str(error)
 
 
 def local_success():
@@ -62,5 +71,6 @@ if __name__ == "__main__":
 
 
 # 笔记：写两句设计说明即可，不额外做新项目。
-# 1. 如果同一正文对应不同作者，text当唯一键会保留几笔？你的业务会选什么键，为什么？
-# 2. 固定只支持两位小数的金额，整数分有什么好处？输入小数位超过两位时要明确什么规则？
+# 1. 如果同一正文对应不同作者，text当唯一键会保留先插入的作者。如果需要保留所有作者，可以text+author做唯一键。
+
+# 2.如果固定只支持两位小数的金额，整数分的好处是，可以避免浮点数精度问题。输入超过两位小数的时候需要做处理，比如四舍五入。
