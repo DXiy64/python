@@ -19,8 +19,8 @@ def parse_result(html):
     # 成功返回(True, rows)；捕获ValueError后返回(False, str(error))。
     # 不打印，不把失败变成(True, [])。
     try:
-        parse(html)
-        return True, parse(html)
+        rows = parse(html)
+        return True, rows
     except ValueError as error:
         return False, str(error)
 
@@ -30,7 +30,7 @@ def fetch_result(fetcher):
     # 抓取成功后交给parse_result，返回它的结果。
     # 捕获requests.RequestException，返回(False, str(error))。
     # 不创建目录、连接数据库，也不要重新调用main。
-    
+
     try:
         html = fetcher()
         return parse_result(html)
