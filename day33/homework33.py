@@ -9,14 +9,22 @@ def save_authors(conn, authors):
     # TODO 1：authors是作者字典列表，遍历并参数化写入authors表。
     # 字段：id、name。使用传入conn，不新建连接、不关闭连接。
     # 本函数只写入，不打印；不要求返回数据，提交由main统一完成。
-    raise NotImplementedError("请完成TODO 1：写入作者")
+    for author in authors:
+        conn.execute(
+            "INSERT INTO authors (id, name) VALUES (?, ?)",
+            (author["id"], author["name"]),
+        )
 
 
 def save_quotes(conn, quotes):
     # TODO 2：quotes是名言字典列表，遍历并参数化写入quotes表。
     # 字段：id、author_id、text；不要把author_id误写成每条名言自己的id。
     # 使用传入conn；提交、关闭和故意错误检查均由main负责。
-    raise NotImplementedError("请完成TODO 2：写入名言")
+    for quote in quotes:
+        conn.execute(
+            "INSERT INTO quotes (id, author_id, text) VALUES (?, ?, ?)",
+            (quote["id"], quote["author_id"], quote["text"]),
+        )
 
 
 def main():
@@ -28,7 +36,9 @@ def main():
         save_quotes(conn, data["quotes"])
         conn.commit()
 
-        author_rows = conn.execute("SELECT id, name FROM authors ORDER BY id").fetchall()
+        author_rows = conn.execute(
+            "SELECT id, name FROM authors ORDER BY id"
+        ).fetchall()
         expected_authors = [(1, "Alex"), (2, "Blair"), (3, "Casey")]
         assert author_rows == expected_authors, (author_rows, expected_authors)
         quote_rows = conn.execute(
@@ -44,7 +54,9 @@ def main():
 
         before = list(quote_rows)
         message = check_unknown_author(conn)
-        after = conn.execute("SELECT id, author_id, text FROM quotes ORDER BY id").fetchall()
+        after = conn.execute(
+            "SELECT id, author_id, text FROM quotes ORDER BY id"
+        ).fetchall()
         assert before == after, (before, after)
         print("不存在的作者被拒绝：", message)
         print("正常数据未受影响；Day33代码检查通过")
@@ -57,4 +69,9 @@ if __name__ == "__main__":
 
 
 # 笔记1：quotes.id与quotes.author_id分别标识什么？Alex的两条名言为何可以共用author_id=1？
+
+# 答1：quotes.id是名言的唯一标识，quotes.author_id是名言的作者id，Alex的两条名言共用author_id=1，是因为它们都来自同一位作者Alex。
+
 # 笔记2：如果只把Casey的id=3写进名言，却没有authors表中对应的行，为什么会失败？
+
+# 答2：如果只把Casey的id=3写进名言，却没有authors表中对应的行，会因为author_id=3在authors表中不存在而失败。
