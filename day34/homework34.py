@@ -10,7 +10,13 @@ def list_quotes(conn):
     # 返回[(名言id, 正文text, 作者name), ...]，按名言id升序。
     # 用传入conn查询，不打印、不写数据、不新建或关闭连接。
     # 正常返回行元组列表；无匹配记录时返回[]。
-    raise NotImplementedError("请完成TODO：关联查询正文与作者名")
+    return conn.execute("""
+        SELECT q.id, q.text, a.name
+        FROM quotes AS q
+        INNER JOIN authors AS a 
+        ON q.author_id = a.id
+        ORDER BY q.id ASC
+        """).fetchall()
 
 
 def main():
@@ -47,3 +53,5 @@ if __name__ == "__main__":
 
 
 # 笔记：用自己的话说明ON应该比较哪两个字段，为什么不能只比较两张表各自的id。
+
+# 答：因为两张表中的id字段可能不是同一个id，所以需要用ON关键字来指定比较的关联字段。而authors表中的id字段是作者的唯一标识，所以应该比较  quotes表  中的author_id字段  和  authors表  中的id字段，以确保关联正确。
