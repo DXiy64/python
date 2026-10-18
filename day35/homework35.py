@@ -10,7 +10,9 @@ def author_report(conn):
     # authors应在LEFT JOIN左边；按作者id升序；零名言作者也要保留。
     # 用COUNT统计真正匹配到的名言，不把空匹配占位行误算成一条名言。
     # 返回fetchall得到的列表，不打印、不修改数据、不新建或关闭conn。
-    raise NotImplementedError("请完成TODO：保留零名言作者的统计")
+    return conn.execute(
+        "SELECT a.id, a.name, COUNT(q.id) AS quote_count FROM authors AS a LEFT JOIN quotes AS q ON q.author_id = a.id GROUP BY a.id, a.name ORDER BY a.id ASC"
+    ).fetchall()
 
 
 def main():
@@ -45,3 +47,5 @@ if __name__ == "__main__":
 
 
 # 笔记：Casey没有名言时，为什么LEFT JOIN后COUNT(*)是1，而COUNT(q.id)是0？NULL与0有什么区别？
+
+# 答：因为虽然Casey没有名言，但是左关联时，authors表中的Casey行仍然存在，只是quotes表中的q.id是NULL，而不是0。COUNT(q.id)会忽略NULL，所以是0；而COUNT(*)会计算所有行，所以是1。

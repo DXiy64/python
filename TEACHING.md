@@ -8,7 +8,7 @@
 
 ## 授课与独立性
 
-2026-10-15课程审查后：按ROADMAP及[课程参考与知识覆盖表](docs/curriculum/COURSE_REFERENCES.md)授课，依据见[课程审查记录](docs/curriculum/COURSE_AUDIT.md)。Day32按原题通过，Day33关系/外键及Day34 INNER JOIN已验收，当前Day35学习LEFT JOIN与零记录统计；后续按路线接回事务/DAO/索引。外部教材每课最多一小节必要选读，提供中文解释，不把多套课程叠加。变更顺序同步前置与覆盖；核心和选学分开，技术专题选择不依赖岗位调研。
+2026-10-15课程审查后：按ROADMAP及[课程参考与知识覆盖表](docs/curriculum/COURSE_REFERENCES.md)授课，依据见[课程审查记录](docs/curriculum/COURSE_AUDIT.md)。Day32按原题通过，Day33关系/外键、Day34 INNER JOIN及Day35 LEFT JOIN已验收，当前Day36学习事务与唯一约束；后续按路线接回DAO/索引。外部教材每课最多一小节必要选读，提供中文解释，不把多套课程叠加。变更顺序同步前置与覆盖；核心和选学分开，技术专题选择不依赖岗位调研。
 
 - 先核对README、ROADMAP、LEARNING_PROGRESS和当前任务，区分已讲授、已实现、历史验收、本次验收和延迟复测。
 - 中文解释，先数据形状、输入输出、函数职责与执行顺序，再语法。类与继承按状态和职责需要选用，不强制项目写类。
