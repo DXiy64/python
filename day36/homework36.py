@@ -24,23 +24,25 @@ def main():
     try:
         rows = prepare_database(conn)
         assert save_batch(conn, rows) == 3
-        # 检验插入的条数是否正确
+        # 调用save_batch写入三笔样本，检查返回的“本次新增数”为3，而非连接累计修改数。
         assert snapshot(conn) == [
             (1, "Keep learning."),
             (1, "Practice helps."),
             (2, "Ask clearly."),
         ]
-        # 检验插入的数据是否正确
+        # 查询实际保存的数据，逐项核对作者ID、正文及排序；结果必须恰好是上面三笔。
         assert not conn.in_transaction
-        # 检验连接是否处于事务状态
+        # not表示取反：要求当前没有未结束的事务，说明函数没有把本次写事务留给调用者。
+        # 单看这个状态不能区分提交或回滚；需结合上面的数据检查判断本次成功保存。
         print("首次提交通过：新增3条")
         assert save_batch(conn, rows) == 0
-        # 检验插入的条数是否正确
+        # 用相同样本再次调用保存函数，检查本次新增数为0：重复记录应被跳过。
         assert len(snapshot(conn)) == 3
-        # 检验次数插入的数据是否正确
+        # 只检查重跑后表内仍有3条，确认没有新增重复行；这条断言不逐项核对正文。
         print("重跑去重通过：新增0条")
         assert save_batch(conn, [(2, "Keep learning.")]) == 1
-        # 检验ID为2的作者的名言是否正确
+        # 1号作者已有相同正文；改为2号作者后应新增1条，检查去重键是“作者ID+正文”。
+        # 这里直接检查的是函数返回值，不是另查数据库核对新记录的所有字段。
         print("复合键通过：不同作者可有相同正文")
         before = snapshot(conn)
         try:
@@ -50,10 +52,15 @@ def main():
         else:
             raise AssertionError("非法作者应抛出IntegrityError")
         assert snapshot(conn) == before
+        # 对比失败前后的实际数据：本批先插入的合法记录也应回滚，旧的4条记录保持不变。
+        # before是上面新增第4条后的数据快照，不是save_batch内部的累计修改数。
         assert not conn.in_transaction
+        # 外键错误已向外传播并离开with conn；要求回滚后没有遗留未结束的事务。
         print("失败回滚通过：整批未保存，原数据保留")
         assert save_batch(conn, []) == 0
+        # 保存空列表，检查本次新增数返回0；空批次不应被当作新增了一条记录。
         assert snapshot(conn) == before
+        # 再查表内实际数据，确认空批次没有改变已有4条记录；查询成功也说明连接仍可使用。
         print("空批次通过；连接仍可使用")
     finally:
         conn.close()
