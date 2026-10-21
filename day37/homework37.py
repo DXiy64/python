@@ -1,4 +1,5 @@
 """Day37作业入口；只实现store37.py两个目标与本文件末尾一句笔记。"""
+
 import sqlite3
 from store37 import save_quotes, list_quotes
 
@@ -17,14 +18,18 @@ def prepare_database(conn):
         );
     """)
     with conn:
-        conn.executemany("INSERT INTO authors VALUES (?, ?)",
-                         [(1, "Alex"), (2, "Blair"), (3, "Casey")])
+        conn.executemany(
+            "INSERT INTO authors VALUES (?, ?)",
+            [(1, "Alex"), (2, "Blair"), (3, "Casey")],
+        )
     return [(1, "Keep learning."), (1, "Practice helps."), (2, "Ask clearly.")]
 
 
 def snapshot(conn):
     """仅供检查整张表是否变化，学员不必修改。"""
-    return conn.execute("SELECT author_id, text FROM quotes ORDER BY author_id, text").fetchall()
+    return conn.execute(
+        "SELECT author_id, text FROM quotes ORDER BY author_id, text"
+    ).fetchall()
 
 
 def main():
@@ -34,7 +39,11 @@ def main():
         # 此时作者3位、名言0条；返回rows不会自动写入名言。
         assert list_quotes(conn, 1) == []
         assert save_quotes(conn, rows) == 3
-        assert snapshot(conn) == [(1, "Keep learning."), (1, "Practice helps."), (2, "Ask clearly.")]
+        assert snapshot(conn) == [
+            (1, "Keep learning."),
+            (1, "Practice helps."),
+            (2, "Ask clearly."),
+        ]
         assert list_quotes(conn, 1) == [(1, "Keep learning."), (1, "Practice helps.")]
         assert list_quotes(conn, 2) == [(2, "Ask clearly.")]
         assert list_quotes(conn, 3) == []
@@ -67,3 +76,5 @@ if __name__ == "__main__":
 
 
 # 笔记TODO：谁创建和关闭连接？为什么store里的函数返回数据，而由main打印？
+
+# 答：这里的函数返回数据，而由main打印，是因为main函数是主函数，负责调用store37.py里的函数，并打印函数的返回值。并且是由main函数创建和关闭连接，因为main函数是整个程序的入口，负责整个程序的运行。

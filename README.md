@@ -3,17 +3,17 @@
 项目式 Python 学习：按学习单元推进，结合短时回忆、独立开发、验证与迁移练习。
 **目标：独立拆解需求、开发、验证、维护与交付Python小项目（90个学习单元，可跨日）**
 
-![进度](https://img.shields.io/badge/%E8%BF%9B%E5%BA%A6-36%20%2F%2090%20%E5%A4%A9%20(40%25)-orange)
+![进度](https://img.shields.io/badge/%E8%BF%9B%E5%BA%A6-37%20%2F%2090%20%E5%A4%A9%20(41.1%25)-orange)
 ![当前阶段](https://img.shields.io/badge/%E9%98%B6%E6%AE%B5%E2%91%A1-%E9%A1%B9%E7%9B%AE%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9B%E9%98%B6%20Day%2021--40-yellow)
 ![目标](https://img.shields.io/badge/Python-Projects-blueviolet)
 
 ## 学习进度
 
-**已完成 36 / 90 个学习单元（40%），Day36参考完整示例后验收通过，Day37已开课待完成。Day30经AI协助修复后验收通过；独立掌握与延迟复测另行记录。Day可跨多个实际日。**　🟩 已完成　🟨 进行中　⬜ 未开始
+**已完成 37 / 90 个学习单元（41.1%），Day37提示后修正验收通过，Day38已开课待完成。Day30经AI协助修复、Day36参考完整示例后验收通过；独立掌握与延迟复测另行记录。Day可跨多个实际日。**　🟩 已完成　🟨 进行中　⬜ 未开始
 
 ```
 Day 01–30  🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-Day 31–60  🟩🟩🟩🟩🟩🟩🟨⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜
+Day 31–60  🟩🟩🟩🟩🟩🟩🟩🟨⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜
 Day 61–90  ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜
 ```
 
@@ -22,7 +22,7 @@ Day 61–90  ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜�
 | 阶段 | 天数 | 状态 |
 | --- | --- | --- |
 | ① 基础收尾（包 / 依赖 / 标准库 / 正则 / 调试） | Day 15–20 | ✅ 已完成（Day 20 复习日三阶段全部验收） |
-| ② 项目与数据库进阶（账本 / 采集 / JOIN / DAO / 索引 / 交付） | Day 21–40 | 🟨 Day21–36完成；Day37进行中；38–40按路线继续 |
+| ② 项目与数据库进阶（账本 / 采集 / JOIN / DAO / 索引 / 交付） | Day 21–40 | 🟨 Day21–37完成；Day38进行中；39–40按路线继续 |
 | ③ 工程基本功与专题项目（Git / Linux / HTTP / 测试 / 一个技术专题） | Day 41–70 | ⬜ 未开始；Day50做技术体验，由用户明确专题 |
 | ④ 语言进阶、维护与综合交付（优先1–2个完整项目） | Day 71–90 | ⬜ 未开始；生成器/装饰器/算法/复现与改需求 |
 
@@ -72,7 +72,8 @@ Day 61–90  ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜�
 | ✅ | Day 34 | INNER JOIN：按作者关系同时查询名言正文与作者名 | `day34/day34.py` + `day34/tools34.py` | `day34/homework34.py` + `day34/homework34.md` + `day34/samples/seed.json`（提示修正后正常/空结果/连接责任及笔记验收通过） |
 | ✅ | Day 35 | LEFT JOIN与零记录统计：COUNT(*)、COUNT(q.id)、NULL与0 | `day35/day35.py` + `day35/tools35.py` | `day35/homework35.py` + `day35/homework35.md` + `day35/samples/seed.json`（提示修正后，正常/全空统计与笔记验收通过） |
 | ✅ | Day 36 | 事务与唯一约束：整批提交/回滚、复合去重键 | `day36/day36.py` + `day36/tools36.py` | `day36/homework36.py` + `day36/homework36.md` + `day36/samples/seed.json`（参考完整示例后，写入/去重/回滚与笔记验收通过） |
-| 🟨 | Day 37 | store接口、调用链与连接责任 | `day37/day37.py` | `day37/homework37.py` + `day37/store37.py` + `day37/homework37.md`（两个函数与一句笔记待完成） |
+| ✅ | Day 37 | store接口、调用链与连接责任 | `day37/day37.py` | `day37/homework37.py` + `day37/store37.py` + `day37/homework37.md`（提示后修正，查询/去重/回滚与连接责任隔离复查通过） |
+| 🟨 | Day 38 | 索引与查询计划、读写及空间取舍 | `day38/day38.py` + `day38/tools38.py` | [任务书](day38/homework38.md) + `day38/homework38.py`（索引函数与计划笔记待完成） |
 
 Day30作业完成计入进度；帮助程度与独立掌握另行记录，延迟复测不作为新增完成门槛。Day31通过编写检查继续巩固。
 
