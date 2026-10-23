@@ -1,4 +1,5 @@
 """Day39作业：仅实现build_parser和末尾一句笔记。"""
+
 import argparse
 import csv
 from pathlib import Path
@@ -14,8 +15,10 @@ def prepare_database(conn):
         CREATE TABLE quotes(author_id INTEGER NOT NULL, text TEXT NOT NULL);
     """)
     with conn:
-        conn.executemany("INSERT INTO quotes VALUES (?, ?)",
-                         [(1, "Keep learning."), (2, "Keep learning."), (1, "Practice helps.")])
+        conn.executemany(
+            "INSERT INTO quotes VALUES (?, ?)",
+            [(1, "Keep learning."), (2, "Keep learning."), (1, "Practice helps.")],
+        )
 
 
 def write_report(path, rows):
@@ -33,12 +36,19 @@ def build_parser():
     --text：必填字符串；--output：Path类型，默认DEFAULT_OUTPUT。
     保留自动--help；两个选项各写一句help说明。
     """
-    raise NotImplementedError("TODO：构造并返回命令行解析器")
+    parser = argparse.ArgumentParser(description="导出指定文本的作者ID和文本")
+    parser.add_argument("--text", required=True, help="指定文本")
+    parser.add_argument(
+        "--output", type=Path, default=DEFAULT_OUTPUT, help="指定输出文件"
+    )
+    return parser
 
 
 def find_by_text(conn, text):
     """已提供的只读参数化查询；返回按作者ID排序的二元组列表。"""
-    return conn.execute("SELECT author_id,text FROM quotes WHERE text=? ORDER BY author_id", (text,)).fetchall()
+    return conn.execute(
+        "SELECT author_id,text FROM quotes WHERE text=? ORDER BY author_id", (text,)
+    ).fetchall()
 
 
 def main(argv=None):
@@ -66,3 +76,11 @@ if __name__ == "__main__":
 
 
 # 笔记TODO：parse_args返回什么？终端--text的值如何传到SQL问号和最终CSV？
+
+# 答：parse_args返回Namespace对象，属性是--text和--output的值。终端--text的值通过命令行参数传入，如：python homework39.py --text "Keep learning."
+# 终端--text的值
+# → args.text
+# → find_by_text的text参数
+# → (text,)绑定SQL问号
+# → 查询返回rows
+# → write_report把rows写入CSV

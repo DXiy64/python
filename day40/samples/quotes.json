@@ -1,0 +1,16 @@
+{
+  "quotes": [
+    {
+      "author_id": 1,
+      "text": "Keep learning."
+    },
+    {
+      "author_id": 2,
+      "text": "Ask clearly."
+    },
+    {
+      "author_id": 1,
+      "text": "Practice helps."
+    }
+  ]
+}

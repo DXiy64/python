@@ -1,0 +1,12 @@
+{
+  "quotes": [
+    {
+      "author_id": 1,
+      "text": "New valid row"
+    },
+    {
+      "author_id": 999,
+      "text": "Invalid author"
+    }
+  ]
+}
